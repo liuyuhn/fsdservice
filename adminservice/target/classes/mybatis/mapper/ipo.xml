@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adfsd.data.mapper.IPOMapper">
+
+    <update id="updateIPO" parameterType="com.adfsd.data.entity.IpoDetail.IpoDetailEntity" >
+        update ipo_detail set
+        stock_exchange = #{stock_exchange},
+        price_per_share = #{price_per_share},
+        total_num = #{total_num},
+        open_date = #{open_date},
+        remark = #{remark} where company_name =#{company_name}
+
+    </update>
+
+    <select id="listIPO" resultType="com.adfsd.data.entity.IpoDetail.IpoDetailEntity">
+        select * from ipo_detail
+    </select>
+
+</mapper>

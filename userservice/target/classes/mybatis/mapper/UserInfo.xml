@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fsd.data.mapper.UserInfoMapper">
+
+    <select id="selectUserByName" resultType="com.fsd.data.entity.UserInfoDB">
+        select user_name, password, user_type, veri_code from user_info where user_name = #{userName}
+    </select>
+
+    <select id="selectByName" resultType="com.fsd.data.entity.UserInfoDB">
+        select user_name, password, user_type from user_info where user_name = #{userName}
+    </select>
+
+    <insert id="addUser" parameterType="com.fsd.data.entity.UserInfoDB" >
+        insert into user_info (user_name,password,user_type, email,mobile_num,veri_code,confirmed) values (#{user_name},#{password},#{user_type}, #{email}, #{mobile_num}, #{veri_code},#{confirmed})
+    </insert>
+
+    <update id="updateValidate" >
+        UPDATE user_info SET confirmed='Y' WHERE user_name = #{uname}
+    </update>
+    <update id="updateUserpass" parameterType="com.fsd.data.entity.UserInfoDB">
+        UPDATE user_info SET password=#{password} WHERE user_name = #{userName}
+    </update>
+</mapper>

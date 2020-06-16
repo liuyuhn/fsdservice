@@ -1,0 +1,53 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: userservice
+  datasource:
+    url: jdbc:mysql://106.14.5.63:3306/fsdstock?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: mysql
+    password: 594Caoyizheng!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # mail properties
+  mail:
+    host: smtp.163.com # 发件服务器
+    username: didida_cjy@163.com # 账号
+    password: 594caoyizheng! # 密码（163需要授权第三方登录密码，请查看设置-客户端授权码密码开通）
+    port: 25
+    protocol: smtp
+    default-encoding: utf-8
+    # 下面这些配置大家不用深究，主要用于配置ssl
+    properties:
+      mail:
+        imap:
+          ssl:
+            socketFactory:
+              fallback: false
+        smtp:
+          auth: true
+          ssl:
+            enable: false
+            socketFactory:
+              class: com.fintech.modules.base.util.mail.MailSSLSocketFactory
+          starttls:
+            enable: false
+            required: false
+      test-connection: false
+
+#指定myBatis的核心配置文件与Mapper映射文件
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  # 注意：对应实体类的路径
+  type-aliases-package: com.fsd.data
+#指定前端hostname
+fsd:
+  frontend:
+    hostname: http://localhost:4200
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8777/eureka/
+  instance:
+    instance-id: springcloud-provider-userservice8081

@@ -1,0 +1,19 @@
+server:
+  port: 8007
+
+
+spring:
+  application:
+    name: zuulservice
+  datasource:
+    url: jdbc:mysql://106.14.5.63:3306/fsdstock?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: mysql
+    password: 594Caoyizheng!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8777/eureka
+    register-with-eureka: false
+    fetch-registry: false
